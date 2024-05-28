@@ -1,1 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('gitclone') {
+            steps {
+                 git branch: 'main', url: 'https://github.com/Vasudhevb/Terraform-.git'
+                
+                 dir('Terraform Day3') {
+                     
+                 }
+            }
+        }
+           
+        stage('init') {
+            steps {
+                dir('Terraform Day3') {
+                sh 'terraform init'
+                
+                }
+            }
+        }
+        
+        stage('plan') {
+            steps {
+                dir('Terraform Day3') {
+                    
+                sh 'terraform plan'
+                }
+            }
+        }
+        
+        stage('apply') {
+            steps {
+            dir('Terraform Day3') {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+        }
+    }
+    
 
