@@ -1,41 +1,25 @@
 pipeline {
     agent any
-
-    stages {
+ stages {
         stage('gitclone') {
             steps {
                  git branch: 'main', url: 'https://github.com/Vasudhevb/Terraform-.git'
-                
-                 
-                     
-                 
-            }
-        }
-           
+                 }
+              }
         stage('init') {
             steps {
-                
                 sh 'terraform init'
-                
-                
-            }
+                }
         }
-        
         stage('plan') {
             steps {
-                
-                    
                 sh 'terraform plan'
-                
-            }
-        }
-        
+                }
+          }
         stage('apply') {
             steps {
-            
-                sh 'terraform apply -auto-approve'
-            
-        }
+            sh 'terraform apply -auto-approve'
+            }
         }
     }
     }
